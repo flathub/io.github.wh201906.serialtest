@@ -1,6 +1,6 @@
 app-id: io.github.wh201906.serialtest
 runtime: org.kde.Platform
-runtime-version: '5.15-22.08'
+runtime-version: 5.15-22.08
 sdk: org.kde.Sdk
 command: SerialTest
 finish-args:
@@ -20,7 +20,7 @@ modules:
       - LIBDIR=/app/lib
     sources:
       - type: archive
-        url: 'https://www.qcustomplot.com/release/2.1.1/QCustomPlot-source.tar.gz'
+        url: https://www.qcustomplot.com/release/2.1.1/QCustomPlot-source.tar.gz
         sha256: 5e2d22dec779db8f01f357cbdb25e54fbcf971adaee75eae8d7ad2444487182f
         x-checker-data:
           type: html
@@ -34,8 +34,8 @@ modules:
     subdir: src
     sources:
       - type: archive
-        url: https://github.com/wh201906/SerialTest/archive/refs/tags/V0.3.tar.gz
-        sha256: d5f79194b0801f730a4a2e59627e36e93e745f503f8bf81ee9fbf429b5801ab3
+        url: https://github.com/wh201906/SerialTest/archive/refs/tags/V0.2.2.tar.gz
+        sha256: 555e3c805b895888bf40e2bf2e8644ac3eeca5d0896001d43035b639fb34d464
         x-checker-data:
           type: html
           url: https://github.com/wh201906/SerialTest/releases/latest
@@ -44,19 +44,14 @@ modules:
 
     post-install:
        # AppData file: https://docs.flatpak.org/en/latest/conventions.html#appdata-files
-       - install -Dm 644 -t ${FLATPAK_DEST}/share/metainfo ../pack/aur/io.github.wh201906.serialtest.metainfo.xml
+      - install -Dm 644 -t ${FLATPAK_DEST}/share/metainfo ../pack/aur/io.github.wh201906.serialtest.metainfo.xml
        # Icon: https://docs.flatpak.org/en/latest/conventions.html#application-icons
        # 1. Icon file has to be renamed to match app id
-       - install -Dm 644 icon/icon.png ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/io.github.wh201906.serialtest.png
+      - install -Dm 644 icon/icon.png ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/io.github.wh201906.serialtest.png
        # Desktop file: https://docs.flatpak.org/en/latest/conventions.html#desktop-files
-       - install -Dm 644 -t ${FLATPAK_DEST}/share/applications ../pack/aur/io.github.wh201906.serialtest.desktop
+      - install -Dm 644 -t ${FLATPAK_DEST}/share/applications ../pack/aur/io.github.wh201906.serialtest.desktop
        # 1. Icon has to be changed to match new filename
-       - desktop-file-edit
-           --set-key="Icon"
-           --set-value="io.github.wh201906.serialtest"
-           ${FLATPAK_DEST}/share/applications/io.github.wh201906.serialtest.desktop
+      - desktop-file-edit --set-key="Icon" --set-value="io.github.wh201906.serialtest"
+        ${FLATPAK_DEST}/share/applications/io.github.wh201906.serialtest.desktop
        # 2. Exec has to be changed to match filename inside flatpak
-       - desktop-file-edit
-           --set-key="Exec"
-           --set-value="SerialTest"
-           ${FLATPAK_DEST}/share/applications/io.github.wh201906.serialtest.desktop
+      - desktop-file-edit --set-key="Exec" --set-value="SerialTest" ${FLATPAK_DEST}/share/applications/io.github.wh201906.serialtest.desktop
