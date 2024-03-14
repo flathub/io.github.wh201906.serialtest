@@ -34,8 +34,8 @@ modules:
     subdir: src
     sources:
       - type: archive
-        url: https://github.com/wh201906/SerialTest/archive/refs/tags/V0.3.4.tar.gz
-        sha256: a8ab4142e2c04b35e7218a83a3aeca573fcf9b028d1f8360d9b2957bbad59a9b
+        url: https://github.com/wh201906/SerialTest/archive/be080805f5ba2fe9a9f9059a3d205314c346b1d4.tar.gz
+        sha256: e71cf632305c77ef588b528d2e56cba8c064c01fd925d35d263fc9a6efb4cbb1
         x-checker-data:
           type: html
           url: https://github.com/wh201906/SerialTest/releases/latest
